@@ -79,10 +79,6 @@ function reverseString(str) {
   return str.split('').reduce((revString, char) => char + revString, '');
 }
 
-// Call Function
-const output = reverseString('hello');
-console.log(output);
-
 // CHALLENGE 2: VALIDATE A PALINDROME
 // Return true if palindrome and false if not
 // ex. isPalindrome('racecar') === 'true', isPalindrome('hello') == false
@@ -92,4 +88,6 @@ function isPalindrome(str) {
     .split('')
     .reverse('')
     .join('');
+
+  return revString === str;
 }
