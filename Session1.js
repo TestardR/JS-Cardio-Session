@@ -91,3 +91,56 @@ function isPalindrome(str) {
 
   return revString === str;
 }
+
+// CHALLENGE 3: REVERSE AN INTEGER
+// Return an integer in reverse
+// ex. reverseInt(521) === 123
+
+function reverseInt(int) {
+  const revString = int
+    .toString()
+    .split('')
+    .reverse()
+    .join('');
+  return parseInt(revString) * Math.sign(int);
+}
+
+// CHALLENGE 4: CAPITALIZE LETTERS
+// Return a string with the first letter of every word capitalized
+// ex. capitalizeLetters('i love javascript') === 'I Love Javascript'
+function capitalizeLetters(str) {
+  const strArr = str.toLowerCase().split(' ');
+
+  for (let i = 0; i < strArr.length; i++) {
+    strArr[i] =
+      strArr[i].substring(0, 1).toUpperCase() + strArr[i].substring(1);
+  }
+  return strArr.join(' ');
+}
+
+//////////////////////////////
+function capitalizeLetters(str) {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(function(word) {
+      return word[0].toUpperCase() + word.substr(1);
+    })
+    .join(' ');
+}
+
+//////////////////////////////
+function capitalizeLetters(str) {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(word => word[0].toUpperCase() + word.substr(1))
+    .join(' ');
+}
+
+///////////////////////////
+function capitalizeLetters(str) {
+  return str.replace(/\b[a-z]/gi, function(char) {
+    return char.toUpperCase();
+  });
+}
