@@ -54,3 +54,80 @@ function longestWord(sen) {
     return longestWordArr;
   }
 }
+
+// CHALLENGE 2: ARRAY CHUNKING
+// Split an array into chunked arrays of a specific length
+// ex. chunkArray([1, 2, 3, 4, 5, 6, 7], 3) === [[1, 2, 3], [4, 5, 6], [7]]
+// ex. chunkArray([1, 2, 3, 4, 5, 6, 7], 2) === [[1, 2], [3, 4], [5, 6], [7]]
+
+///////////////////// Solution 1
+
+function chunkArray(arr, len) {
+  // Init chunked arr
+  const chunkedArr = [];
+  // Set index
+  let i = 0;
+
+  // Loop while index is less than the array length
+  while (i < arr.length) {
+    // Slice out from the index to the index + the chunk length (len) and push on to the chunked array
+    //The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included)
+    chunkedArr.push(arr.slice(i, i + len));
+    // Increment by chunk length
+    i += len;
+  }
+  return chunkedArr;
+}
+
+///////////////////// Solution 2
+function chunkArray(arr, len) {
+  // Init chunked arr
+  const chunkedArr = [];
+
+  // Loop through arr
+  arr.forEach(function(val) {
+    // Get last element
+    const last = chunkedArr[chunkedArr.length - 1];
+
+    // Check if last and if lasth length is equal to the chunk lengh (len)
+    if (!last || last.length === len) {
+      chunkedArr.push([val]);
+    } else {
+      last.push(val);
+    }
+    // console.log(chunkedArr);
+  });
+  return chunkedArr;
+}
+
+// CHALLENGE 3: FLATTEN ARRAY
+// Take an array of arrayw and flatten to a single array
+// ex. [[1, 2], [3, 4], [5, 6], [7]] = [1, 2, 3, 4, 5, 6, 7]
+
+////////////// Solution 1
+
+function flattenArray(arrays) {
+  // The reduce() method executes a reducer function (that you provide) on each member of the array resulting in a single output value.
+  return arrays.reduce(function(a, b) {
+    return a.concat(b);
+  });
+}
+
+////////////// Solution 2
+
+function flattenArray(arrays) {
+  return [].concat.apply([], arrays);
+  //   return [].concat(arrays);
+}
+
+////////////// Solution 3
+// Spread operator ...
+// function add(a, b, c){
+//     return a + b + c;
+// }
+// const arr = [1, 2, 3];
+// console.log(add(...arr));
+
+function flattenArray(arrays) {
+  return arrays.concat(...arrays);
+}
