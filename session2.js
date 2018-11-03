@@ -131,3 +131,22 @@ function flattenArray(arrays) {
 function flattenArray(arrays) {
   return arrays.concat(...arrays);
 }
+
+// CHALLENGE 4: ANAGRAM
+// Return ture if anagram and false if not
+// ex. 'elbow' === 'below'
+// ex. 'Dormitory' === 'ditry room##'
+
+function isAnagram(str1, str2) {
+  return ormatStr(str1) === formatStr(str2);
+}
+
+// Helper function
+function formatStr() {
+  return str
+    .replace(/[^\w]/g, '')
+    .toLowerCase()
+    .split('')
+    .sort()
+    .join('');
+}
